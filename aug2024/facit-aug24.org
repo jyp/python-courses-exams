@@ -1,0 +1,112 @@
+file:facit-aug24.html
+
+For each question, paste your solution in the text field under the
+description. 
+
+For programming questions:
+- All answers should be provided as working Python code
+- You should perform your own tests to verify that the code is
+  correct. However test cases need not be provided with your
+  answer. If you do provide test cases, you should identify those
+  clearly (for example with comments).
+- for maximum credits, the provided answer should be in the best
+  possible complexity class. Less efficient answers will be given
+  partial credits.
+- It is not necessary to comment on your code, it is more important
+  that the code is clean and easy to read.
+
+  
+The maximum possible total number of points is 60. 24 points
+correspond to grade 3, 36 points correspond to grade 4, and 48 points
+correspond to grade 5.
+
+*Allowed aids:*
+  - You can use the Self-Practice website in sandbox mode to test your
+    code. From the Safe Exam Browser, you should click the "Python
+    Sandbox" button on the bottom left of your screen to open it. So
+    will open the self-practice website that we used in the course in
+    another window.  On the self-practice website, it is intended for
+    you to use the "Exam Sandbox" exercise block, which you can find
+    at the bottom of the exercise list. Note that your code won't be
+    saved if you switch exercise in the self-practice website, or if
+    you close or reload its window. Every time you click on "Python
+    Sandbox", a new window will appear. It is advised to have one
+    Self-Practice window open for each question and switch between
+    windows using Alt+Tab or Option+Tab.
+  - You can refer to your own notes and books. *These notes or books must
+    be on paper.*
+
+*Disallowed aids:* anything else. In particular, it is not allowed to
+ use electronic devices which can access:
+  - AI tools (Copilot, ChatGPT, Llama, ...) 
+  - Communication tools (chat, mail, social media, ...)
+  - Electronic documentation (Google, stack overflow, python guides or manuals, ...)
+  - Your own notes in electronic format
+
+* Question 1
+
+Assume that a timestamp is represented as a tuple
+~(hour,minute)~. Assume further that each component of the tuple is an
+integer, and that the ~minute~ component is in the interval 0
+to 59. Write a function ~advance~ which takes an arbitrary timestamp
+as parameter and returns a new timestamp which is advanced by 10
+minutes towards the future. 
+
+** Answer
+#+include: "q1.py" src python
+
+* Question 2
+
+Your user has many agenda files, and each of them have the same
+format. Each line of the file has the form: ~Start Stop Task~, where
+~Start~ and ~Stop~ are integers and ~Task~ is a string without spaces.
+For example, "agenda.txt" might look like this:
+
+#+include: "agenda.txt" example
+
+In this example, the ~exam~ is considered to happen from 9 to 13 included.
+
+Write two python functions:
+ 1. ~load_agenda(file_name)~, that reads the agenda and returns a list
+    of tuples with ~Start~, ~Stop~ and ~Task~, using appropriate data types.
+ 2. ~tabulate_agenda(agenda)~ which takes the result of the previous
+    function and returns a list of lists ~result~, such that
+    ~result[t]~ is the list of tasks happening at time ~t~.  Note that
+    tasks can overlap. For instance, assuming the above agenda,
+    ~result[13] = ['exam','lunch']~.
+
+ You can test both functions like so:
+#+begin_src python
+print(tabulate_agenda(load_agenda("agenda.txt")))
+#+end_src
+
+ 
+** Answer
+#+include: "q2.py" src python
+
+* Question 3
+
+Write a class ~Tracker~ which keeps track of tasks done during a
+day. It must have the following methods:
+
+- ~__init__(self,now)~
+  It initializes the tracker and sets the current time to ~now~. You can assume that time can be represented by a single integer, as in Question 2.
+- ~tick(self,n)~
+  It advances the time by ~n~ units of time.
+- ~start(self,task)~
+  It records that ~task~ is starting. A warning message is printed if the task is already started.
+- ~stop(self,task)~. 
+  It records that ~task~ stops. A warning message is printed if the task is not started.
+- ~stop_all(self)~
+  It records that all ongoing tasks stop.
+- ~print_agenda(self)~ It prints the agenda for the day in the format
+  of ~agenda.txt~ (see Question 2). If there are tasks which are not stopped,
+  they should not be printed in this format. A warning message
+  should be printed in this case.
+
+Here is a run which reproduces the contents of ~agenda.txt~ from Question 2:
+
+#+include: "q3-ex.py" src python
+
+** Answer
+#+include: "q3.py" src python
