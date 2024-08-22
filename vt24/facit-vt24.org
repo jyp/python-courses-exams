@@ -1,0 +1,173 @@
+#+TITLE: Exam for DAT555, DAT445, TDA548
+#+DATE: 2024-03-12
+#+AUTHOR: JP Bernardy and Krasimir Angelov
+
+For each question, paste your solution in the text field under the
+description. 
+
+For programming questions:
+- All answers should be provided as working Python code
+- You should perform your own tests to verify that the code is
+  correct. However test cases need not be provided with your
+  answer. If you do provide test cases, you should identify those
+  clearly (for example with comments).
+- for maximum credits, the provided answer should be in the best
+  possible complexity class. Less efficient answers will be given
+  partial credits.
+- It is not necessary to comment on your code, it is more important
+  that the code is clean and easy to read.
+
+  
+The maximum possible total number of points is 65. 24 points
+correspond to grade 3, 36 points correspond to grade 4, and 48 points
+correspond to grade 5.
+
+*Allowed aids:*
+  - You can use the python interpreter available on this website
+    https://python-introduction.cse.chalmers.se/sandbox.html to test
+    your code. From the Safe Exam Browser, you should click the "Open
+    Python" button on the bottom left of your screen to open it. So
+    will open the self-practice website that we used in the course in
+    another window.  On the self-practice website, it is intended for
+    you to use the "Exam Sandbox" exercise block, which you can find
+    at the bottom of the exercise list. Note that your code won't be
+    saved if you switch exercise in the self-practice website, or if
+    you close or reload its window.
+  - You can refer to your notes and books. *These notes or books must
+    be on paper.*
+
+*Disallowed aids:* anything else. In particular, it is not allowed to use the following electronic tools.
+  - AI tools (Copilot, ChatGPT, Llama, ...) 
+  - Communication tools (chat, mail, social media, ...)
+  - Electronic documentation (Google, stack overflow, python guides or manuals, ...)
+  - Your own notes in electronic format
+
+
+* Question 1
+
+The period of revolution (T) of a planet is connected with the mass of
+the sun M and the radius R of its orbit by the following formula,
+where G is the gravitational constant:
+  
+  T²= (4π²/GM)R³
+
+Write a Python function ~planet_period(name)~ which prints the period
+of rotation of the planet with the given ~name~, if it is a valid
+planet name. Otherwise, print "Unknown planet name".
+
+You can assume the following data (expressed in SI units--- meters, seconds, etc.):
+
+#+begin_src python
+M = 1.991e30
+G = 6.67e-11
+radii = {
+    "mercury": 57.9e9,
+    "venus": 108.2e9,
+    "earth": 149.6e9,
+    "mars": 228e9,
+    "jupiter": 779.3e9,
+    "saturn": 1427e9,
+    "uranus": 2871e9,
+    "neptune": 4497e9,
+    "pluto": 5913e9
+}
+#+end_src
+
+Hints:
+- You can compute π using ~math.pi~, square root using ~math.sqrt~, and general exponents with the ~**~ operator.
+- To test your program, check the period of revolution for Earth. (Remember that applying the above formula to the above inputs will give a result in number of seconds.)
+- You can assume that planet names are input in lowercase.
+
+** Answer
+#+INCLUDE: "q1.py" src python
+* Question 2
+
+Write a function ~gene_match(gene,genome)~ that searches for a genetic
+subsequence in a genome.  The gene is given as a string. The genome is
+given as a file name.  Both the gene string and the genome file
+contents are comprised only of the characters ~A~, ~C~, ~G~ or
+~T~. The function should print all the positions in the genome where
+the gene can be found. Print the starting positions, indexed from
+zero. For example, if the gene contains ~ACA~ and the genome file
+contains ~GTACACAGT~, then both 2 and 4 should be printed.
+
+For half credits, you can assume that the genome file can fit in
+memory. For full credits, you must deal with files which cannot fit in
+memory.  In both cases, you can assume that the gene is smaller than
+the genome.
+
+Hints:
+   - if ~f~ is a file, then ~f.read(n)~ reads ~n~ characters from ~f~
+     and return them as a string. If the file has ~m~ characters
+     remaining to read and ~m<n~, then only ~m~ characters will be
+     read. In particular, at the end of the file, ~f.read~ always
+     returns the string.
+   - Within the *Exam Sandbox, Question 2*, you can open the file
+     "genome.txt". It has the contents GTACACAGT. You can use this
+     file for testing.
+ 
+** Answer
+#+INCLUDE: "q2.py" src python
+* Question 3
+
+Write a class called ~Kepler~. Its goal is to record planet observations
+and estimate the radius of their orbits.
+
+The class should have the following methods:
+- ~__init__(self)~ which initializes the attributes
+- ~observe(self, planet_name, angle, time)~
+
+  This method records an observation of a given planet at a given
+  time, at a given angle in its orbit. You can assume that the angle
+  is given in radians.
+
+  Note: assuming two observations, respectively at times t₁,t₂ and
+  angles a₁, a₂ the one can estimate the period of revolution of the
+  planet to be 2π×(t₁-t₂)/(a₁-a₂).
+  You can further assume that t₂ > t₁ implies a₂ > a₁ and that observations
+  are reported in chronological order.
+
+- ~get_period(self,planet_name)~ This method will return an estimation
+  of the planet's period of revolution. You should compute this
+  estimation averaging the estimated period of revolution for all
+  /consecutive/ observations of the given planet. (Use the above formula
+  for each consecutive pair of observations and take the average.)
+
+  If there are not enough observations, this method should return ~None~.
+  
+- ~get_radius(self,planet_name)~
+
+  This method will return an estimation of the planet's radius using
+  the Kepler formula from Question 1 and the period estimated by ~get_period~.
+
+    If there are not enough observations, this method should return ~None~.
+
+- ~print_planets(self)~
+
+   This method will print a table with every planet's name, estimated
+   period and estimated radius.
+
+   If there are not enough observations for any given planet, print
+   ~None~ for period and radius.
+
+
+** Answer
+#+INCLUDE: "q3.py" src python
+
+* Question 4
+
+Assume that a function P(x) processes an input x of size n in /kn²/
+seconds, where /k/ represents the speed of the computer. (That is P
+implements an algorithm of quadratic complexity.) With your current
+hardware, you process an input size one million in one day. You
+consider procuring new hardware which is 10 times faster. How big of
+an input would you be able to process in a day with this new hardware?
+
+(Just write your answer, not the reasoning behind it.)
+
+** Answer
+
+#+begin_src python
+sqrt(10)*1e6
+#+end_src
+

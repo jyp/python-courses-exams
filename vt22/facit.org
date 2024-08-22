@@ -1,0 +1,122 @@
+#+TITLE: DAT445 Exam, March 2022
+#+options: toc:nil
+#+OPTIONS: ^:nil
+
+* Question 1
+Four times a year Sweden tests its system for important messages to the public, i.e. VMA (Viktigt
+Meddelande till Allmänheten) also known as Hesa Fredrik. The system is tested at 15:00 on the
+first holiday-free Monday of March, June, September and December.
+Write a program which asks the user for the current month name (January, February, etc) and the
+current day of the week (Monday, Tuesday, etc). If the month is one of the four mentioned above
+and the day is Monday, the program should also ask if this is the first holiday-free Monday. If the
+answer is yes, then the program must print a message that the VMA must be tested, otherwise it
+must print that no testing should be done.
+Example dialogs:
+
+#+begin_example
+Current month? March
+Day of the week? Monday
+Is that the first holiday-free Monday? yes
+Test the VMA at 15:00!
+#+end_example
+
+#+begin_example
+Current month? June
+Day of the week? Tuesday
+No testing today!
+#+end_example
+
+You can choose to implement the interface in either English or Swedish and correspondingly the
+day and month names should be interpreted in the correct language
+
+** Answer
+
+#+INCLUDE: "q1.py" src python
+
+* Question 2
+
+
+John Doe is using the file "my_groceries.txt" to store the list of groceries that he keeps at home.
+The following is an example of the file content:
+#+INCLUDE: "my_groceries.txt" example
+On every line there is the name of a food product, followed by two quantities - how many
+packages of that product he has, and how many he wants to have. For example, currently he has
+only 1 package of flour but he wants to have 2. The name of a product may consist of several
+words but the two quantities are always the last two words on every line.
+Implement the function shoppingList() which reads the file and prints a shopping list. The list must
+contain the names of all products that he needs to buy as well as the required quantity. For the
+example above, the function must print:
+#+begin_src 
+flour 1
+salt 1
+blue cheese 2
+#+end_src
+He needs to buy one package of flour, one of salt, and two of blue cheese, to fill in his supplies.
+He has more sugar than he needs and just enough tomatoes, so they are not included in the
+shopping list.
+
+** Answer
+
+#+begin_src python :results output :exports code
+  with open("my_groceries.txt") as f:
+    for line in f:
+      fields = line.split()
+      n = len(fields)
+      if n < 3:
+          print("Invalid line:", line)
+      else:
+        want = int(fields[-1].strip())
+        have = int(fields[-2].strip())
+      if want > have:
+        print(" ".join(fields[0:-2]),want - have)
+#+end_src
+
+#+RESULTS:
+: flour 1
+: salt 1
+: blue cheese 2
+
+* Question 3
+
+Implement the class Tracker which is used for tracking the GPS positions of different objects. The
+class must have the following methods:
+1. An __init__ method which initializes a tracker with no pre-existing tracking information. (3 points)
+2. A method addPosition(object_name, latitude, longitude) which adds the current GPS
+position (latitude and longitude) for the object with the given name. (4 points)
+3. A method printPath(object_name) which prints the path traveled by the given object. The
+path is simply the sequence of GPS coordinates visited by the object. (4 points)
+4. A method pathLength(object_name) which returns the total length of the path traversed by
+the object. The total length is the sum of the lengths of the lines between every two
+consequent GPS coordinates. If there are less than two GPS positions for an object, then
+the total length is 0. The length of a line between two GPS positions is computed by using
+the haversine function given bellow. (6 points)
+
+#+INCLUDE: "haversine.py" src python
+
+The following is an example for how the class Tracker can be used:
+    
+#+begin_src python :results output :exports both
+from q3 import Tracker
+
+tr = Tracker()
+tr.addPosition("A",32.0004311,-103.548851)
+tr.addPosition("A",33.374939,-103.6041946)
+tr.addPosition("A",31.102422,-105.9668979)
+tr.addPosition("SB Multisal",57.68633,11.97719)
+tr.printPath("A")
+print(tr.pathLength("A"))
+tr.printPath("SB Multisal")
+print(tr.pathLength("SB Multisal"))
+#+end_src
+
+#+RESULTS:
+: 32.0004311 -103.548851
+: 33.374939 -103.6041946
+: 31.102422 -105.9668979
+: 489.54312772451726
+: 57.68633 11.97719
+: 0
+
+** Answer
+
+#+INCLUDE: "q3.py" src python

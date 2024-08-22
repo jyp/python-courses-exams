@@ -1,0 +1,164 @@
+#+TITLE: DAT505 Summer Omtentamen 2
+#+options: toc:nil
+
+* Question 1
+The blood pressure is characterized by two numbers - called systolic and diastolic pressure.
+Depending on the combination of these two number the pressure is characterized as low, ideal,
+pre-high and high. The rules are as follows:
+- low: systolic < 90 and diastolic < 60
+- ideal: systolic < 120 and diastolic < 80
+- pre-high: systolic < 140 and diastolic < 90
+- high: systolic < 190 and diastolic < 100
+Write a program which interacts with the user and asks for his/her blood pressure. After that it
+prints for its status according to the rules above. If either of the values is negative or outside of the
+ranges prescribed above, then print an error.
+
+
+
+#+begin_src python
+def question1():
+    systolic = int(input("Systolic pressure"))
+    diastolic = int(input("Diastolic pressure"))
+
+    if systolic < 0 or diastolic < 0:
+        print("Numbers cannot be negative")
+    elif systolic < 90 and diastolic < 60:
+        print("Your blood pressure is low")
+    elif systolic < 120 and diastolic < 80:
+        print("Your blood pressure is ideal")
+    elif systolic < 140 and diastolic < 90:
+        print("Your blood pressure is pre-high")
+    elif systolic < 190 and diastolic < 100:
+        print("Your blood pressure is high")
+    else:
+        print("The values are above the ranges")
+#+end_src
+
+* Question 2
+
+When people create new crosswords, then need to find a new word with a given length and with
+certain letters at certain positions in the word. The file "words.txt" contains a list of words (one per
+line). For example:
+
+#+begin_example
+apple
+orchard
+sun
+skyscraper
+pun
+#+end_example
+
+Write the function:
+#+begin_src python
+def findMatch(pattern):
+...
+#+end_src
+which returns the list of words from "words.txt" matching the pattern. The pattern is a string
+containing spaces and letters. A space in the pattern matches any letter in the word. If the pattern
+contains a specific character then the same character must appear in the search word at the
+same place. The length of the word must be the same as the length of the pattern.
+
+** Answer
+
+#+begin_src python
+def findMatch(pattern):
+    f = open("words.txt")
+    matches = []
+    for line in f:
+        word = line.strip()
+        if len(word) != len(pattern):
+            continue
+        match = True
+        for i in range(len(word)):
+            if pattern[i] != ' ' and word[i] != pattern[i]:
+                match = False
+                break
+        if match:
+            matches.append(word)
+    f.close()
+    return matches
+#+end_src
+
+* Question 3
+
+The class must have the following components:
+An ~__init__~ method which initializes the state of the game, i.e. a 3 by 3 matrix where all
+cells are empty. It must also set that the first player plays with "x".
+A method:
+#+begin_src python
+def play(self,row,col):
+...
+#+end_src
+which fills an empty cell at the given row and column with either "x" or "o" depending on the
+current player. If the cell is not empty then the cell remains unchanged and the method
+returns False. In all other cases the result is True and after the call, the players change
+turns.
+A method:
+#+begin_src python
+def gameOver(self):
+...
+#+end_src
+which returns True/False depending on whether the game is over. The game is over if there
+is at least one row, column or diagonal filled in with one and the same symbol.
+** Answer
+
+#+begin_src python :results output :exports both
+  def testLine(x):
+      return x[0] == x[1] and x[0] == x[2] and x[0] != " "
+  def getCols(m):
+     for i in range(3):
+         yield [m[0][i], m[1][i], m[2][i]]
+  def getDiag(m):
+      return [m[0][0], m[1][1], m[2][2]]
+  class TicTacToe:
+      def __init__(self):
+        self.state = [[" "," "," "],[" "," "," "],[" "," "," "]]
+        self.next = "x"
+      def play(self,row,col):
+          m = self.state
+          if m[row][col] == " ":
+              m[row][col] = self.next
+              if self.next == "x":
+                  self.next = "o"
+              else:
+                  self.next = "x"
+              return True
+          else:
+              return False
+      def gameOver(self):
+          m = self.state
+          for r in m:
+              if testLine(r): return True
+          for c in getCols(m):
+              if testLine(c): return True
+          if testLine(getDiag(m)): return True
+          if testLine(getDiag(list(reversed(m)))): return True
+          return False
+
+  ##################
+  ## TESTING CODE
+
+  assert testLine(["x","x","x"])
+  assert testLine(["o","o","o"])
+  assert not testLine(["x"," ","x"])
+  assert not testLine([" "," "," "])
+  # print(list(getCols([["1","2","3"],["4","5","6"],["7","8","9"]])))
+  # print(list(getDiag(list(reversed([["1","2","3"],["4","5","6"],["7","8","9"]])))))
+
+  g = TicTacToe()
+  g.play(1,1);print(g.gameOver())
+  g.play(0,0);print(g.gameOver())
+  g.play(1,0);print(g.gameOver())
+  g.play(2,2);print(g.gameOver())
+  g.play(1,2);print(g.gameOver())
+  print (g.state)
+#+end_src
+
+#+RESULTS:
+: False
+: False
+: False
+: False
+: True
+: [['o', ' ', ' '], ['x', 'x', 'x'], [' ', ' ', 'o']]
+    

@@ -1,0 +1,100 @@
+#+TITLE: Answers to June 2022 Exam
+#+options: toc:nil
+
+* Q1
+As a compensation for the inflation the government of a country decided to increase the pensions.
+Their decision is as follows:
+All pensions will get 5% increase
+The minimal pension is set to 450. If after the 5% increase the pension is still smaller than
+450, then it is set to 450.
+The maximal pension is 2500. Pensions that become greater than that after the increase
+are set to 2500.
+The pension is always rounded up to a whole number.
+Write a python program which asks the user for his/her current pension and prints the new one. The
+following are example dialogs with the user.
+#+begin_example
+You current pension: 1211
+You new pension will be: 1272
+Your current pension: 200
+Your new pension will be: 450
+Your current pension: 2400
+Your new pension will be: 2500
+#+end_example
+
+** Answer
+#+INCLUDE: "q1.py" src python
+
+* Q2
+
+The file students.txt contains information about students taking part of a course which has an
+obligatory lab and an exam. For simplicity of the task, we assume that the file contains only the
+student's first name and his/her grades (G/U) on the lab and on the exam. An example content
+follows:
+
+#+INCLUDE: "students.txt" example
+
+implement the function ~print_report()~ which reads the file and prints out a report which looks as
+follows:
+
+#+begin_example
+,*** Students who passed ***
+Alex
+Eva
+,*** Students who failed ***
+Gustav
+Mark
+Mary
+,*** Students to be graded ***
+Erik
+Sara
+#+End_example
+
+In order to pass the course, the students must have G on both the lab and the exam. If a student
+has U on either the lab or on the exam, then he/she has failed. If at least one grade is missing
+then the student's performance is yet to be graded.
+
+** Answer
+#+INCLUDE: "q2.py" src python
+
+* Q3
+
+One professor had two lists of students. The first listed everyone who attended his/her first lecture
+and the other one with everyone who attended the second lecture. Now the professor needs to
+combine the two lists into one which says who has attended which lecture.
+Write a class ~ListMerger~ to solve the problem. The class should have the following components:
+An ~__init__~ Method which sets the initial state of the object.
+A method ~addStudent(name,lecture)~ which registers the fact that a student with the given
+name has attended the corresponding lecture.
+A method ~getNrOfLectures(name)~ which returns how many lectures the student with that
+name has attended.
+A method ~printList()~ which prints the combined list.
+It should be possible to use the class as follows:
+#+begin_src python
+merger = ListMerger()
+merger.addStudent("Erik", 1)
+merger.addStudent("Eva", 1)
+merger.addStudent("Gustav", 2)
+merger.addStudent("Mark", 2)
+merger.addStudent("Mary", 1)
+merger.addStudent("Erik", 2)
+merger.addStudent("Mark", 1)
+merger.printList()
+#+End_src
+the last method call should print the following:
+#+begin_example
+Erik 1 2
+Eva 1
+Gustav 2
+Mark 1 2
+Mary 1
+#+End_example
+The order in which the students are printed is not important but for each student the lecture
+numbers should be sorted. For the method ~getNrOfLectures(name)~ we have:
+#+begin_src python
+merger.getNrOfLectures("Erik") == 2
+merger.getNrOfLectures("Eva") == 1
+#+end_src
+
+** Answer
+#+INCLUDE: "q3.py" src python
+

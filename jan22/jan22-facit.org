@@ -1,0 +1,79 @@
+#+TITLE: Exam DAT455 DAT505, Jan 2022
+#+options: toc:nil
+
+* Question 1
+
+The body mass index (BMI) is a number used to categorize person's weight as underweight,
+normal, overweight and obese. Its value is computed by dividing the person's weight in kilograms
+by his/her height in meters squared:
+
+BMI = weight / height²
+
+From the index, the category is determined according to the table:
+| Underweight | < 18.5      |
+| Normal      | 18.5 – 24.9 |
+| Overweight  | 25.0 – 29.9 |
+| Obese       | > 29.9      |
+Write a program which asks the user for his/her weight and height, and prints out the
+corresponding BMI as well as the category from the above table.
+
+** Answer
+
+#+INCLUDE: "q1.py" src python
+
+* Question 2
+Every year Santa receives billions of letters from children with their wishes for presents.
+Unfortunately he does not have time to read them all. Fortunately he found that the child's name
+is always the last word in the letter. He also does not need to read the letter in detail; it is enough
+to scan in for keywords like doll, car, crayon, etc.
+Write the function read_letter, which given a file name and list of keywords returns a pair of the
+child's name and the list of keywords found in the letter.
+For example if the file "letter_alex.txt" contains the text:
+
+#+INCLUDE: "letter_alex.txt" example
+
+Note that in the letter all words are separated by spaces which means that it is enough to use the
+~split()~ method to separate the text into words!
+
+** Answer
+
+#+INCLUDE: "q2.py" src python
+
+* Question 3
+
+A dictionary consists of words and the list of their meanings. Sometimes we want to find the
+possible meanings of a word and sometimes, we need all words with a given meaning. Example:
+#+begin_example
+apple: fruit, tree
+strawberry: fruit, plant
+plum: fruit, tree
+birch: tree
+#+end_example
+Implement the class ~WordDict~ which models these associations. The class should have the
+following components:
+- An ~__init__~ method which initializes an object to represent an empty dictionary.
+- A method ~addWord(word, meanings)~ which adds a new word with the
+  specified list of meanings. If some of the meanings already exist,
+  they are not added again.
+- A method ~getMeanings(word)~ which returns the list of meanings for that word.
+- A method ~getWords(meaning)~ which returns the list of words with the given meaning.
+
+Example:
+#+begin_example
+> dict = WordDict()
+> dict.addWord("apple", ["fruit","tree"])
+> dict.addWord("strawberry", ["fruit","plant"])
+> dict.addWord("plum", ["fruit"])
+> dict.addWord("plum", ["tree"]) # a second meaning is added
+> dict.addWord("plum", ["fruit"]) # this line does nothing
+> dict.addWord("birch", ["tree"])
+> dict.getMeanings("plum")
+["fruit","tree"]
+> dict.getWords("tree")
+["apple","plum","birch"]
+#+end_example
+
+
+** Answer
+
+#+INCLUDE: "q3.py" src python
