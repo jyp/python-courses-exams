@@ -25,7 +25,7 @@ class Tracker:
         for (start,stop,task) in self.done:
             print(start,stop,task)
 
-from q3 import Tracker
+# from q3 import Tracker
 a = Tracker(9)
 a.start("exam")
 a.tick(3)

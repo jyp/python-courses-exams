@@ -1,3 +1,5 @@
+# assumption: a timestamp can refer to different days and thus hours may be >24.
+
 def advance(t):
     (h,m) = t
     m = m + 10
