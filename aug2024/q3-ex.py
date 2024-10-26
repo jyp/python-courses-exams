@@ -1,4 +1,5 @@
 from q3 import Tracker
+
 a = Tracker(9)
 a.start("exam")
 a.tick(3)

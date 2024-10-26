@@ -1,4 +1,3 @@
-
 def read_letter(fname, keywords):
     # assumption: the file always contains at least one word.
     found = []
@@ -11,4 +10,4 @@ def read_letter(fname, keywords):
     return (last_word, found)
 
 
-print(read_letter("letter_alex.txt", ["doll","car","crayon"]))
+print(read_letter("letter_alex.txt", ["doll", "car", "crayon"]))

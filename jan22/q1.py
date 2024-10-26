@@ -1,4 +1,3 @@
-
 w = float(input("weight"))
 h = float(input("height"))
 

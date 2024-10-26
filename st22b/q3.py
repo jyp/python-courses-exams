@@ -5,24 +5,26 @@ def list_to_str(xs):
         result = result + " " + str(x)
     return result
 
+
 class ListMerger:
     # instance attribute:
     # attended: dictionary mapping student name to the *list* of their attended lectures.
     def __init__(self):
         self.attended = dict()
-        
-    def addStudent(self,name,lecture):
+
+    def addStudent(self, name, lecture):
         # add lecture to attended[name]
         if name not in self.attended:
             self.attended[name] = []
         self.attended[name].append(lecture)
-        
-    def getNrOfLectures(self,name):
+
+    def getNrOfLectures(self, name):
         return len(self.attended[name])
-    
+
     def printList(self):
         for student in self.attended:
-            print(student,list_to_str(sorted(self.attended[student])))
+            print(student, list_to_str(sorted(self.attended[student])))
+
 
 #################################
 # Test code
@@ -41,5 +43,3 @@ merger.printList()
 # Gustav 2
 # Mark 1 2
 # Mary 1
-
-    
