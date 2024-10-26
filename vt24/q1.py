@@ -14,14 +14,16 @@ radii = {
     "pluto": 5913e9
 }
 
+
 def kepler(R):
-    return math.sqrt  ((4* math.pi**2 /(G*M)) * R**3)
+    return math.sqrt((4 * math.pi ** 2 / (G * M)) * R ** 3)
+
 
 # test:
 # seconds_per_day = 24*60*60
 # print(kepler(radii["earth"]))
 def planet_period(name):
-  if planet in radii:
-      print(kepler(radii[name]))
-  else:
-      print("Unknown planet")
+    if planet in radii:
+        print(kepler(radii[name]))
+    else:
+        print("Unknown planet")
