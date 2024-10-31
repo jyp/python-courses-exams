@@ -103,7 +103,8 @@ day. It must have the following methods:
   of ~agenda.txt~ (see Question 2). If there are tasks which are not stopped,
   they should not be printed in this format. A warning message
   should be printed in this case.
-
+- Attention: a task with the same name can occur twice.
+  
 Here is a run which reproduces the contents of ~agenda.txt~ from Question 2:
 
 #+include: "q3-ex.py" src python
