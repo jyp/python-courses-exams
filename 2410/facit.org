@@ -1,0 +1,298 @@
+:PROPERTIES:
+:GPTEL_MODEL: gemma2:9b-instruct-q6_K
+:GPTEL_BACKEND: Ollama
+:GPTEL_SYSTEM: You are a Swedish translator. Translate all the input to Swedish. No explanations should be output.
+:GPTEL_BOUNDS: nil
+:END:
+
+* General information
+For each question, paste your solution in the text field under the
+description. 
+
+For programming questions:
+- All answers should be provided as working Python code
+- You should perform your own tests to verify that the code is
+  correct. However test cases need not be provided with your
+  answer. If you do provide test cases, you should identify those
+  clearly (for example with comments).
+- For maximum credits, the provided answer should be in the best
+  possible complexity class. Less efficient answers will be given
+  partial credits.
+- It is not necessary to comment on your code, it is more important
+  that the code is clean and easy to read. Comments are good to
+  document assumptions that you make, if any.
+  
+
+The maximum possible total number of points is either 60 or 35.
+For 60-point exam: 24 points
+correspond to grade 3, 36 points correspond to grade 4, and 48 points
+correspond to grade 5.
+For 35-point exam: 14 points
+correspond to grade 3, 21 points correspond to grade 4, and 28 points
+correspond to grade 5.
+
+*Allowed aids:*
+  - You can refer to your 1-page of handwritten notes.
+  - You can use the Self-Practice website in sandbox mode to test your
+    code. From the Safe Exam Browser, you should click the "Python
+    Sandbox" button on the bottom left of your screen to open it. This
+    will open the self-practice website that we used in the course in
+    another window.  Note that your code won't be
+    saved if you switch exercise in the self-practice website, or if
+    you close or reload its window. Therefore it is advised to have one
+    Self-Practice window open for each question and switch between
+    windows using Alt+Tab or Option+Tab. Every time you click on "Python
+    Sandbox", a new window will appear.
+  - You can refer to the "python reference" link at the top of the
+    Self-Practice. Again, it is advised to open it in a separate
+    window.
+  - Questions are provided in Swedish for convenience, but in case of
+    discrepancy the English version applies.
+
+*Disallowed aids:* anything else. In particular, it is not allowed to use the following electronic tools.
+  - AI tools (Copilot, ChatGPT, Llama, ...)
+  - Communication tools (phone, chat, mail, social media, ...)
+  - Electronic documentation (Google, stack overflow, python guides or manuals, ...)
+  - Books
+  - Notes in printed or electronic format
+** Swedish
+
+För varje fråga, klistra in din lösning i textfältet under beskrivningen.
+
+För programmeringsfrågor:
+- Alla svar ska ges som fungerande Python-kod.
+- Du ska genomföra dina egna tester för att verifiera att koden är korrekt. Testfall behöver dock
+  inte lämnas in. Om du lämnar in testfall, bör du identifiera dem tydligt (t.ex. med
+  kommentarer).
+- För full poäng, ska svaret vara i den bästa möjliga
+  komplexitetsklassen. Mindre effektiva lösningar kommer att få delpoäng.
+- Det är inte nödvändigt att kommentera din kod, men det är viktigt att koden är ren och
+  lättläst. Kommentarer kan användas för att dokumentera eventuella antaganden du gör.
+
+Den maximala totala poängsumman är antingen 60 eller 35. För 60-poängsexamen: motsvarar 24 poäng
+betyget 3, 36 poäng motsvarar betyget 4 och 48 poäng motsvarar betyget 5. För 35-poängsexamen:
+motsvarar 14 poäng betyget 3, 21 poäng motsvarar betyget 4 och 28 poäng motsvarar betyget 5.
+
+*Tillåtna hjälpmedel:*
+- Du får använda dig av dina handskrivna anteckningar (ett A4 blad).
+- Du kan använda Self-Practice-webbplatsen i sandbox-läge för att testa din kod. Från Safe Exam
+  Browser ska du klicka på "Python Sandbox"-knappen i nedra vänstra hörnet på skärmen för att öppna
+  den. Det kommer att öppna self-practice-webbplatsen som vi använde i kursen i ett annat
+  fönster. OBS! Din kod kommer inte att sparas om du byter uppgift på self-practice-webbplatsen
+  eller stänger eller reloadar dess fönster. Det är därför rekommenderat att ha ett
+  Self-Practice-fönster öppet för varje fråga och växla mellan fönster med Alt+Tab eller
+  Option+Tab. Varje gång du klickar på "Python Sandbox" kommer ett nytt fönster att öppnas.
+- Du kan klicka på "python reference"-länken överst på self-practice-webbplatsen. OBS! Det är
+  rekommenderat att öppna det i ett separat fönster.
+- Frågor ges även på svenska för bekvämlighets skull, men vid eventuell diskrepans gäller den engelska
+  versionen.
+
+*Förbjudna hjälpmedel:* någonting annat. I synnerhet är det inte tillåtet att använda följande
+ elektroniska verktyg.
+- AI-verktyg (Copilot, ChatGPT, Llama, ...)
+- Kommunikationstool (telefon, chat, mail, sociala medier, ...)
+- Elektronisk dokumentation (Google, stack overflow, python-guider eller manualer, ...)
+- Böcker
+- Anteckningar i tryckt eller elektronisk format
+
+* Q1: Elo calculator
+
+In a lot of games, such as Chess, players are assigned an Elo
+rating. A usual Elo rating is between 1000 and 2000.
+
+If the player playing the white pieces has rating A and the player
+having the black pieces has rating B, the expected score of a matchup is
+given by the following formula:
+
+    $\frac {1} {{10}^{\frac{B - A} {400}} + 1}$
+
+A score of 1 corresponds to certainty for A to win the matchup, and a score of 0 corresponds to B winning.
+Write a function ~guess_winner(white_rating, black_rating)~ which prints one of the following messages:
+
+- "White is expected to win"
+- "Black is expected to win"
+- "A draw is expected"
+
+Print the last message if the expected score is between 0.45 and 0.55, and
+either of the other messages accordingly to the prediction.
+
+** Swedish translation
+
+I ett flertal spel, som t.ex. schack, tilldelas spelarna ett s.k. Elo-tal, "rating".
+En vanlig Elo-rating ligger mellan 1000 och 2000.
+
+Om spelaren med de vita pjäserna har rating A och spelaren med de svarta pjäserna har rating B, så beräknas
+det förväntade resultatet, "score", för ett schackparti av följande formel:
+
+    $\frac {1} {{10}^{\frac{B - A} {400}} + 1}$
+
+En score på 1 betyder att de vita vinner med säkerhet, och 0 att de svarta vinner med säkerhet.
+Skapa en funktion ~guess_winner(white_rating, black_rating)~ som skriver ut ett av följande
+meddelanden:
+
+- "Vita förväntas vinna"
+- "Svarta förväntas vinna"
+- "Remi förväntas" (partiet är oavgjort)
+
+Skriv det sista meddelandet om score ligger mellan 0,45 och 0,55, och de andra meddelandena enligt förväntad score.
+
+
+* Q2: Molecular Mass
+
+Write a function ~m_mass(molecule)~ which computes an approximation of
+the molecular mass of ~molecule~, as follows.
+
+The molecule is provided as a string, with a series of atom names
+possibly followed by a digit. For example: "H2O", "CH4", "H2SO3", etc.
+
+The mass of the molecule should be computed by an appropriate weighted
+sum of the given atoms. For instance, the estimated weight of H2O is 2
+times the weight of atom H plus the weight of atom O.
+  
+You should assume a file ~atoms.txt~ which contains the atomic
+weight data. The file has one atom data per line. On each line, the
+atom letter occurs first, then a space, then its weight.
+
+- You can assume that atoms are identified by a single letter. For
+  instance, LiOH is not a valid input.
+- You can assume that each atom does not occur more than 9 than times
+  in a molecule. For instance, C10H22 is not a valid input.
+- You can assume that data for every atom in the molecule is present
+  in ~atoms.txt~.
+- Within the *Exam Sandbox, Question 2*, you can open an example
+  ~atoms.txt~ file.
+
+  
+** Swedish translation
+
+Skriv en funktion ~m_mass(molecule)~ som beräknar en approximering av
+molekulmassan för ~molecule~, enligt följande:
+
+Molekylen anges som en sträng, med en serie atomnamn eventuellt följt av en siffra.
+Till exempel: "H2O", "CH4", "H2SO3" och så vidare.
+
+Massan för molekylen beräknas som en viktad summa av de angivna atomerna.
+T.ex är den uppskattade vikten för H2O två gånger vikten av atom H plus vikten of atom O.
+
+Du ska förutsätta att det finns en fil ~atoms.txt~ som innehåller datan om atomvikterna.
+Filen har en atom och dess vikt per rad.
+På varje rad förekommer atombokstaven först, sedan ett mellanslag, sedan vikten.
+
+- Du kan förutsätta att atomer identifieras med en enda bokstav. T.ex är LiOH inte giltigt.
+- Du kan förutsätta att varje atom inte inträffar högst 9 gånger i en molekyl. T.ex är C10H22 inte giltigt.
+- Du kan förutsätta att datan för varje atom i molekylen finns i filen ~atoms.txt~.
+
+* Q3: Player Pool Manager
+
+Write a class ~EloPool~ which tracks the Elo rating of a pool of
+players.  It should have the following methods:
+
+- ~__init__(self)~
+
+  This function initialises an empty pool of player. For each
+  attribute initialised here, add one line of comment explaining its
+  role.
+  
+- ~register_player(self,player_name)~
+
+  This function adds a player to the pool. Every player starts as an active player with a rating of
+  1000 Elo. If the player is already registered, an error
+  message should be printed instead of registering the player. A
+  retired (non-active) player cannot re-enter the pool of active players. Print an
+  error message if this is attempted.
+
+- ~match_players(self,player1_name,player2_name,result)~ This function
+  should update the rating of the players when a match between them is
+  played.
+  
+  ~result~ is 1 if player1 wins, 0 if player2 wins, and 0.5 if it is a draw.
+  
+  Let /e/ be the expected score for the match (see Q1).
+  
+Then, both players ratings should be adjusted. One of them is
+  increased or decreased by /K×(result-e)/ and the other by
+  /K×(e-result)/. To determine which is which, consider that if there
+  is a winner, then the score of the winner will be increased and the
+  loser score will be decreased.
+  In the above formula, let ~K=40~.
+
+  If either of the players are not registered active players, an error
+  message should be printed.
+
+  Note: you should copy your implementation of the formula for /e/
+  from Q1 in your answer to this question.  If you could not implement
+  the formula for /e/ in Q1, you can let /e/ be 0.8.
+  
+- ~retire_player(self,player_name)~
+
+  This method removes a player from the pool of active players. The
+  player's Elo points (rating) should be returned to the pool of players.  When
+  doing so you must /maintain the invariant that the sum of Elo
+   ratings in the pool is equal to 1000 times the number of active players/.
+   The points should be distributed evenly among all the remaining active players.
+   If the player isn't registered, or was already retired, print an error message instead.
+
+- ~print_players(self)~
+
+  This method should print a table of all players who have ever
+  entered the pool. For each player, print the following information:
+  
+  1. the player's name
+  2. their current rating or their rating at time of retirement.
+
+  The table should be sorted by player name.
+  
+** Swedish translation
+
+Skriv en klass ~EloPool~ som håller reda på Elo-ratings av en pool av spelare.
+Den ska ha följande metoder:
+
+- ~__init__(self)~
+
+Denna funktion initialiserar en tom spelarpool. För varje attribut
+som initieras här, lägg till en kommentarrad som förklarar dess roll.
+
+- ~register_player(self,player_name)~
+
+Denna funktion lägger till en spelare i poolen. Varje spelare startar
+som en aktiv spelare med Elo-rating 1000. Om spelaren redan är registrerad, skrivs ett felmeddelande
+istället för att registrera spelaren. En retirerad (icke-aktiv) spelare kan inte
+återinträda i poolen av aktiva spelare.
+Skriv ett felmeddelande om detta försöks.
+
+- ~match_players(self,player1_name,player2_name,result)~ Denna funktion
+  ska justera ratingen för spelarna när ett parti mellan dem spelas.
+
+~result~ är 1 om player1 vinner, 0 om player2 vinner och 0.5 vid remi (oavgjort).
+
+Låt /e/ vara det forventade retultatet (score) för partiet (se Q1).
+Därefter justeras båda spelares Elo-ratings. En av dem ökar eller minskas med
+/K×(result-e)/ och den andra med /K×(e-result)/.
+För att bestämma vilken som är vilken, tänk på att den som är vinnare ska få en höjd räting
+medan förloraren ska få en sänkt rating.
+I ovanstående formel, låt ~K=40~.
+
+Om någon av spelarna inte är en registrerad aktiv spelare, skrivs ett felmeddelande.
+
+Obs: Du bör kopiera din implementering av formeln för /e/ från Q1 i ditt svar till denna fråga. Om du
+Om du inte kunde implementera formeln för /e/ i Q1, du kan låta /e/ vara 0.8.
+
+- ~retire_player(self,player_name)~
+
+Denna metod tar bort en spelare från poolen av aktiva spelare. Spelarens Elo-poäng ska
+återlämnas till poolen av spelare.
+Vid återlämningen ska du /upprätthålla invarianten att summan av Elo-ratings i
+poolen är lika med 1000 gånger antalet aktiva spelare/.
+Poängen ska fördelas jämnt mellan alla
+återstående aktiva spelare.
+Om spelaren inte är registrerad eller redan har retirerat, skrivs ett felmeddelande i stället.
+
+- ~print_players(self)~
+
+Denna metod ska skriva ut en tabell över alla spelare som någonsin har varit med i poolen. För varje
+varje spelare ska du skriva följande information:
+
+1. Spelarens namn
+2. Deras nuvarande ranking eller rankingen vid retireringen.
+
+Tabellen ska sorteras efter spelarnas namn.
