@@ -30,9 +30,10 @@ class EloPool:
             self.retired_elo[player_name] = pElo
             self.elo.pop(player_name)
             n = len(self.elo)
-            d = points_to_distribute/n
-            for p in self.elo:
-                self.elo[p] += d
+            if n > 0:
+                d = points_to_distribute/n
+                for p in self.elo:
+                    self.elo[p] += d
     
     def print_players(self):
         data = []
