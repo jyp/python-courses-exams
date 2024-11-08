@@ -54,4 +54,6 @@ p.match_players("Tal","Reti",0)
 p.match_players("Tal","Reti",1)
 p.match_players("Lasker","Reti",1)
 p.print_players()
+p.retire_player("Tal")
+p.print_players()
 
