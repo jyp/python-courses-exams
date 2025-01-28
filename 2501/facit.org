@@ -1,4 +1,4 @@
-This is a 35-point exam; 2 questions only.
+This is a smaller (35-point) exam, with 2 questions only.
 
 * Q1
 
@@ -6,7 +6,7 @@ As a short reminder, the Newton-Raphson method can be used to
 calculate solutions to an equation $f(x)=0$ as long as the function
 has a derivative (and some other assumptions).
 
-- You start with an initial guess {x_0}
+- You start with an initial guess \(x_0\)
 - Then you calculate iterative values using this formula: $x_{n+1} = x_n - \frac{f(x_n)}  {f'(x_n)}$
 - You continue calculating new values until the difference is small enough
 
