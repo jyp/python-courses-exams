@@ -47,7 +47,8 @@ correspond to grade 5.
     Self-Practice. Again, it is advised to open it in a separate
     window.
   - Questions are provided in Swedish for convenience, but in case of
-    discrepancy the English version applies.
+    discrepancy the English version applies. You can use the
+    (so-called "hamburger") menu to choose the language of questions.
 
 *Disallowed aids:* anything else. In particular, it is not allowed to use the following electronic tools.
   - AI tools (Copilot, ChatGPT, Llama, ...)
