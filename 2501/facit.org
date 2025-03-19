@@ -1,3 +1,5 @@
+#+TITLE: Exam DAT645, Jan 2025
+
 This is a smaller (35-point) exam for a 4.5-credit course.
 This is why it has 2 questions only.
 
