@@ -102,7 +102,6 @@ atom letter occurs first, then a space, then its weight.
 - Within the *Exam Sandbox, Question 2*, you can open an example
   ~atoms.txt~ file.
 
-  
 * Q3: Player Pool Manager
 
 Write a class ~EloPool~ which tracks the Elo rating of a pool of
