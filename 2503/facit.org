@@ -1,3 +1,7 @@
+#+OPTIONS: toc:nil
+#+LATEX_HEADER: \usepackage{svg}
+
+
 * General information
 For each question, paste your solution in the text field under the
 description.
@@ -165,6 +169,9 @@ Tasks:
   in the matrix ~m~ according to the single-rotation rule defined
   above, for a single iteration. The number ~n~ is the iteration we're at. (5 points)
 
+** Answer
+
+#+include: q2.py src python
 
 * Q3 The Royal Game of Ur  (25 points)
 
@@ -242,7 +249,7 @@ correspond an action of a player.
   print the outcome. You can assume that this function will be called
   exactly once at the beginning of each player turn.  Hint: use the
   function ~randint(low,high)~ from the ~random~ module. (3 points)
-- ~pass(self)~: don't make a move, and yield to the other player.  (And wait
+- ~pass_action(self)~: don't make a move, and yield to the other player.  (And wait
   for their roll) (1 point)
 - ~move(self,loc)~: move the piece of the current player located at
   the location ~loc~, by the amount rolled previously. (15 points) The
@@ -265,9 +272,8 @@ to the game state. Instead, print a suitable message and wait for
 another action from the same player.
 
 ** Answer
-#+begin_src python
-#+end_src
 
+#+include: q3.py src python
 
 
 #  LocalWords:  ChatGPT planetoid ATTR px draughts gameboard gameplay

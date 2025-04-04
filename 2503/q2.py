@@ -22,7 +22,8 @@ def iteration(n,m):
           rotate_group(m,i,j)
 
 ###########################
-## Test # (and Graphical demo)
+## For information only:
+## Test (and Graphical demo)
 
 import graphics, random, tkinter
 
