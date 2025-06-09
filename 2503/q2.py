@@ -4,7 +4,6 @@ def rotate_group(m,i,j):
   m[i][j] = m[i+1][j]
   m[i+1][j] = m[i+1][j+1]
   m[i+1][j+1] = m[i][j+1]
-  m[i+1][j+1] = m[i][j+1]
   m[i][j+1] = save
 def is_group_complete(m,i,j):
   return (i >=0 and j >=0) or # optional in this implementation
