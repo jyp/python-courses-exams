@@ -1,0 +1,81 @@
+* Number Notations
+
+A number like 235 in decimal is a /notation/ for the following
+expression:
+
+#+begin_example
+    2 · 10² + 3 · 10¹ + 5 · 10⁰
+ =  200 + 30 + 5               
+ =  235                        
+#+end_example
+
+We can take any other integer as the base of our number system. In base
+9 (/nonary/), 235 would be a notation for the following expression:
+
+#+begin_example
+    2 · 9² + 3 · 9¹ + 5 · 9⁰
+ =  162 + 27 + 5            
+#+end_example
+
+which evaluates to 194 in decimal. In the course, we have learned the
+representation of numbers in /binary/, i.e. base 2.
+
+** Your tasks
+
+You will write a function which can take a notation in any base and
+compute its value. A /base/ will be defined by a dictionary which maps
+digits (as characters) to their value (as integers).
+
+Do so following this structure:
+
+- define a function ~parse(base,notation)~ which takes ~notation~ as a
+  string, and returns a list of integers ~l~, so that ~l[i]~ is the
+  value of the digit found in position ~i~ in the string, as an
+  integer. If a digit is not valid, then return ~None~ instead. The
+  parameter ~base~ is a base, as defined above.  (5 points)
+
+- define a function ~powers(m,n)~, where ~m~ is the number of digits
+  in the base as an integer, and returns a list of powers of ~m~ of
+  length ~n~.
+  - For example: ~powers(2,5)~ equals ~[16,8,4,2,1]~.
+  - Hint: you can use the ~reverse~ method or the ~reversed~
+    function. (5 points)
+
+- Define a function =n_ary(base, notation)= that takes the ~base~, and
+  the =notation= as a string. Return ~None~ if the notation is invalid
+  for the given base, or its value as an integer otherwise.  You must
+  call the above functions to structure the function. (5 points)
+
+- Define a function ~make_base(n)~ which creates the usual base for
+  any ~n~ less or equal to 10. For example, ~base(2)~ equals ~binary~
+  as given below. (5 points)
+
+
+Example runs:
+
+#+begin_src python :results=outputs
+  # examples of base:
+  binary = {'0': 0, '1': 1}
+  decimal = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
+  nonary = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8}
+  hexadecimal = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'A': 10, 'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15}
+
+  print(hexadecimal)
+#+end_src
+
+#+RESULTS:
+: None
+
+#+begin_src python
+>>> n_ary(decimal, "235")
+235
+>>> n_ary(nonary, "235")
+194
+>>> n_ary(binary, "235")
+None
+>>> n_ary(binary, "1011")
+11
+>>> n_ary(hexadecimal, "FF")
+255
+#+end_src
+

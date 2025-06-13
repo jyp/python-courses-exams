@@ -1,0 +1,115 @@
+* Crochet
+
+Crochet forms fabric by cross-linking loops of yarn, building rows in a snake-like path.
+
+#+attr_html: :width 500px
+[[./crochet.png]]
+
+Each row of the fabric consists of /stitches/.  What we care about
+here is that the snake will be arranged in /rows/ that connect to each
+other. The connections are not always 1-to-1, but are more
+complicated. We define four types of instructions, as follows:
+
+
+1. /Chain/ creates a new stitch not connected to the previous row. (You must always begin with a row of chain stitches.)
+2. /Single/ creates a new stitch from a single stitch in the previous row.
+3. /Increase/ creates two new stitches from a single stitch in the previous row.
+4. /Decrease/ creates a new stitch from two stitches in the previous row.
+
+The following picture presents an example of four rows, with a single instruction on each row.
+
+#+attr_html: :width 400px
+[[./graph-simple.png]]
+
+
+In Python, we will represent the stitches as integers, and the
+cross-links as pairs. The graph above is represented by the following
+cross-links:
+
+#+begin_src python
+links = [(1,2), (2,3), (2,4), (3,5), (4,5)]
+#+end_src
+
+Note that because consecutive stitches are always connected directly
+by the yarn, but we won't care about such direct connections,
+only between inter-row connections (called cross-links.)
+
+** Your task
+
+Your task is to print a list of cross-links, given a series of instructions.
+
+The instructions are provided by method calls to the class ~Crochet~
+that you will write.  Rows will play an important role: the class must
+maintain the state of the previous and current rows, as lists of
+position identifiers. You need to implement following methods:
+
+
+*** ~__init__(self)~ (4p)
+
+Initializes the state variables for:
+- links, as a list of tuples of integers;
+- previous and current row, as lists of integers; and
+- total stitch count.
+
+*** ~chain(self)~ (4p)
+
+- Creates a new stitch, unconnected to any stitch.
+- Note that chain in the middle of a row is possible!
+
+*** ~single(self)~ (4p)
+
+- Creates a new stitch and links it to a single stitch on the previous row.
+- If the previous row doesn't contain enough stitches, raises a ~ValueError~ exception.
+
+*** ~inc(self)~ (4p)
+
+- Creates two new stitches and links them to a single stitch on the previous row.
+- If the previous row doesn't contain enough stitches, raises a ~ValueError~ exception.
+
+*** ~dec(self)~ (4p)
+
+- Creates a new stitch and links it to two stitches on the previous row.
+- If the previous row doesn't contain enough stitches, raises a ~ValueError~ exception.
+
+*** ~next_row(self)~ (4p)
+
+- Starts a new row.
+- The old current row becomes the previous row.
+
+*** ~print_links(self)~ (1p)
+
+- Prints a list of all the cross-links created so far.
+
+** Hints
+- You can access the end of a list using the method ~pop~, or indexing ~[-1]~.
+- You may need to introduce more fields in addition to the ones specified.
+** Example
+
+#+attr_html: :width 500px
+[[./graph-lagom.png]]
+
+The graph above is produced by the following code.
+
+#+begin_src python
+c = Crochet()
+c.chain()       # Stitch 1
+c.chain()       # Stitch 2
+c.chain()       # Stitch 3
+c.chain()       # Stitch 4
+c.next_row()
+c.single()      # Stitch 5, link (4,5)
+c.dec()         # Stitch 6, links (3,6) and (2,6)
+c.single()      # Stitch 7, link (1,7)
+c.chain()       # Stitch 8
+c.next_row()
+c.single()      # Stitch 9, link (8,9)
+c.inc()         # Stitches 10 and 11, links (7,10) and (7,11)
+c.single()      # Stitch 12, link (6,12)
+#+end_src
+
+After defining your Crochet object as above, calling ~print_links~ should output the following links.
+
+#+begin_src python
+>>> c.print_links()
+[(4, 5), (3, 6), (2, 6), (1, 7), (8, 9), (7, 10), (7, 11), (6, 12)]
+#+end_src

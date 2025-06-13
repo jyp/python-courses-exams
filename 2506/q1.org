@@ -1,0 +1,45 @@
+* Conic Sections
+
+A conic section (or conic, or quadratic curve) is a curve obtained
+from a cone's surface intersecting a plane. The three types of conic
+section are the hyperbola, the parabola, and the ellipse; the circle
+is a special case of the ellipse. The hyperbola is sometimes
+rectangular.
+
+The general equation for a conic section is:
+
+Ax²+Bxy+Cy²+Dx+Ey+F=0
+
+Let Δ = B²-4AC
+
+- if Δ < 0, the equation represents an ellipse;
+     - if A = C and B = 0, the equation represents a circle, which is a special case of an ellipse;
+- if Δ = 0, the equation represents a parabola;
+- if Δ > 0, the equation represents a hyperbola;
+   - if A + C = 0, the equation represents a rectangular hyperbola.
+
+
+Write a function ~conic()~ that *inputs* the values of ~A~, ~B~ and ~C~
+and determines which case applies, and prints it.
+
+Example run:
+
+#+begin_src python
+>>> conic()
+input A: 1
+input B: 0
+input C: 1
+The function represents a circle
+
+>>> conic()
+input A: 3
+input B: 0
+input C: 2
+The function represents an ellipse
+
+>>> conic()
+input A: 1
+input B: 2
+input C: -3
+The function represents a hyperbola
+#+end_src
