@@ -2,18 +2,17 @@ class Crochet:
     def __init__(self):
         self.stitch_count = 0
         self.prev_row = []
-        self.rows = [[]]
+        self.current_row = []
         self.links = []
 
     def new_stitch(self):
         self.stitch_count += 1
         n = self.stitch_count
-        self.rows[-1].append(n)
+        self.current_row.append(n)
         return n
 
-    def new_link(self, prev, curr, typ):
-        # type included only for the sake of visualization
-        self.links.append((prev,curr, typ))
+    def new_link(self, prev, curr):
+        self.links.append((prev,curr))
 
     def chain(self):
         self.new_stitch()
@@ -24,7 +23,7 @@ class Crochet:
         else:
             n = self.new_stitch()
             p = self.prev_row.pop()
-            self.new_link(p,n, "sc")
+            self.new_link(p,n)
 
     def inc(self):
         if not self.prev_row:
@@ -33,8 +32,8 @@ class Crochet:
             n1 = self.new_stitch()
             n2 = self.new_stitch()
             p = self.prev_row.pop()
-            self.new_link(p,n1, "inc")
-            self.new_link(p,n2, "inc")
+            self.new_link(p,n1)
+            self.new_link(p,n2)
 
     def dec(self):
         if len(self.prev_row) < 2:
@@ -43,15 +42,15 @@ class Crochet:
             n = self.new_stitch()
             p1 = self.prev_row.pop()
             p2 = self.prev_row.pop()
-            self.new_link(p1,n, "dec")
-            self.new_link(p2,n, "dec")
+            self.new_link(p1,n)
+            self.new_link(p2,n)
 
     def next_row(self):
-        self.prev_row = self.rows[-1].copy()
-        self.rows.append([])
+        self.prev_row = self.current_row
+        self.current_row = []
 
     def print_crochet(self):
-        print([(a,b) for a,b,_ in self.links])
+        print(self.links)
 
 
 ## Test
