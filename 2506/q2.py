@@ -27,6 +27,8 @@ def n_ary(base, notation):
             result += digits[i] * pows[i]
         return result
 
+def make_base(n):
+    return dict((str(i), i) for i in range(n))
 
 decimal = dict((str(i), i) for i in range(10))
 nonary = dict((str(i), i) for i in range(9))
