@@ -49,25 +49,25 @@ class Crochet:
         self.prev_row = self.current_row
         self.current_row = []
 
-    def print_crochet(self):
+    def print_links(self):
         print(self.links)
 
-
 ## Test
-c = Crochet()
-c.chain()       # Stitch 1
-c.chain()       # Stitch 2
-c.chain()       # Stitch 3
-c.chain()       # Stitch 4
-c.next_row()
-c.single()      # Stitch 5, link (4,5)
-c.dec()         # Stitch 6, links (3,6) and (2,6)
-c.single()      # Stitch 7, link (1,7)
-c.chain()       # Stitch 8
-c.next_row()
-c.single()      # Stitch 9, link (8,9)
-c.inc()         # Stitches 10 and 11, links (7,10) and (7,11)
-c.single()      # Stitch 12, link (6,12)
-
 if __name__ == "__main__":
-    c.print_crochet()
+    c = Crochet()
+    
+    c.chain()       # Stitch 1
+    c.chain()       # Stitch 2
+    c.chain()       # Stitch 3
+    c.chain()       # Stitch 4
+    c.next_row()
+    c.single()      # Stitch 5, link (4,5)
+    c.dec()         # Stitch 6, links (3,6) and (2,6)
+    c.single()      # Stitch 7, link (1,7)
+    c.chain()       # Stitch 8
+    c.next_row()
+    c.single()      # Stitch 9, link (8,9)
+    c.inc()         # Stitches 10 and 11, links (7,10) and (7,11)
+    c.single()      # Stitch 12, link (6,12)
+    
+    c.print_links()
