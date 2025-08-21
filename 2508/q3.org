@@ -1,0 +1,74 @@
+* Offside Rules in Rugby
+
+The objective of rugby is to move the ball forward (towards the goal
+zone).
+
+
+Keeping track of who is onside or offside is critical to the
+game. Here is a simplified set of rules to determine if a player is
+offside:
+
+- A player can either be onside or offside (never both at the same time)
+- A player A is said to in front of player B if A is closer to the
+  goal zone than B.
+- If a player kicks the ball, tackles another player or is tackled,
+  then all teammates in front of the player become offside.
+- When an onside player ends up in front of an offside player, then
+  this other player becomes onside again. This condition can be
+  achieved by movement of either player.
+
+A player which is offside can make no action other than moving
+backwards. *Otherwise it is foul play*.
+
+
+Write a class ~Player~ which keeps track of the status of one player
+and update the offside status of its team as appropriate.
+Each ~Player~ object it should keep track of:
+ - whether the player is onside or offside
+ - where the player is on the pitch. For this position you will store
+   a floating point number.
+- additionally there should be an attribute which holds a list of all
+  players in the team (including the player ~self~).
+
+A player can make either of the following actions:
+ - move (run or walk) on the pitch
+ - kick the ball
+ - catch the ball
+ - tackle a player (of the opposite team)
+
+The ~Player~ class should have the following methods:
+- ~__init__(self)~ which creates a player. The player is assumed to be
+  onside and at position zero. The team attribute is initially an
+  empty list, which is populated by the ~initialise_team~ function
+  which you define later. (3 points)
+- ~move(self,dx)~ move a the player by a distance ~dx~ on the pitch, in the direction of
+  the goal zone. That is, a positive value of ~dx~ means moving forward, and a
+  negative value means moving backwards. (In reality players can move
+  side to side as well, but this does not matter when determining if
+  they are offside or not.)  (10 points)
+- ~tackling_or_kick(self)~ Simulates tackling or kicking according to
+  the ruleset. (5 points)
+- ~catch_ball(self)~ Simulates catching the ball according to the
+  ruleset. (2 points)
+
+For each method, update the attributes of the current player /and
+other players in the team/ according to the above ruleset. Print the
+message "Foul" in case of foul play. (For this exercise, you don't have to
+verify if a player has the ball or not; this is why tackling and kicking
+have the same implementation.)
+
+Additionally, write a /function/ ~initialise_team(n)~ which creates a
+list of ~n~ players in the same team and return this list. All players
+can be assume to start at position zero. Note: you will have to modify
+the ~team~ attribute of each player. (5 points)
+
+Here is an example run:
+
+#+begin_example
+>>> players = initialise_team(2) # a team of just 2 players for testing
+>>> players[0].move(5) # player 0 is now in front
+>>> players[1].tackling_or_kick() # the other player is tackled
+>>> players[0].move(5) # player 0 keeps moving forward: this is a foul.
+Foul
+#+end_example
+

@@ -1,0 +1,77 @@
+* General information
+For each question, paste your solution in the text field under the
+description.
+
+- All answers should be provided as working Python code
+- You should perform your own tests to verify that the code is
+  correct. However test cases need not be provided with your
+  answer. If you do provide test cases, you should identify those
+  clearly (for example with comments).
+- For maximum credits, the provided answer should be in the best
+  possible complexity class. Less efficient answers will be given
+  partial credits.
+- It is not necessary to comment on your code, it is more important
+  that the code is clean and easy to read. It is good to use comments
+  to document assumptions that you make, if any.
+
+*For a 2-question exam:*
+
+The maximum possible total number of points
+is 35. 14 points correspond to grade 3, 21 points correspond to grade
+4, and 28 points correspond to grade 5.
+
+*For a 3-question exam.*
+
+The maximum possible total number of points is 60.  24 points
+correspond to grade 3, 36 points correspond to grade 4, and 48 points
+correspond to grade 5.
+
+
+*Allowed aids:*
+  - You can refer to your 1-page of handwritten notes.
+  - You can use the Self-Practice website in sandbox mode to test your
+    code. From the Safe Exam Browser, you should click the "Python
+    Sandbox" button on the bottom left of your screen to open it. This
+    will open the self-practice website that we used in the course in
+    another window.  Note that your code won't be
+    saved if you close or reload its window. Therefore it is advised to leave the
+    Self-Practice window open and switch between
+    windows using Alt+Tab or Cmd+Tab.
+
+  - You can refer to the "python reference" resource on inspera.
+  # - Questions are provided in Swedish for convenience, but in case of
+  #   discrepancy the English version applies. You can use the
+  #   (so-called "hamburger") menu to choose the language of questions.
+
+*Disallowed aids:* anything else. In particular, it is not allowed to use the following electronic tools.
+  - AI tools (Copilot, ChatGPT, Llama, ...)
+  - Communication tools (phone, chat, mail, social media, ...)
+  - Electronic documentation (Google, stack overflow, python guides or manuals, ...)
+  - Books
+  - Notes in printed or electronic format
+
+** Results and Exam Review (Granskning)
+
+As soon as the exam grading is complete (about one week after the exam
+date), you'll be able to access your graded copy from Inspera. You
+will be able to consult standard solutions for the exam at the usual
+place: =https://github.com/jyp/python-courses-exams=
+# NOTE: it is critical that this is not a clickable link otherwise the students can follow it (and then get locked out of inspera.)
+
+If you believe that a mistake happened when grading your submission,
+you can come to the exam review ('granskning'), which will take place
+
+- Date: Aug 25th
+- Time: 10 to 11am
+- Location: EDIT-6128
+
+Before you arrive, *prepare*:
+
+  1. The specific question or sub-question which you believe was
+     handled incorrectly.
+  2. Your explanation of why your submission is actually correct.
+  3. Your anonymous code used on Inspera.
+
+Note: the purpose is of exam review is not to discuss the grading
+scale or difficulty level of the exam, but only to clear potential
+errors in grading.

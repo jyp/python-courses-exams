@@ -1,0 +1,25 @@
+* Confidence Interval
+
+The bounds of a confidence interval CI are given by the formula:
+
+  \(CI = \bar{x} \pm z \frac{s}{\sqrt{n}}\)
+
+where
+- \(\bar{x}\) is the sample mean
+- \(z\) is the confidence level value (e.g., for a 95% confidence interval, z ≈ 1.96)
+- \(s\) is the sample standard deviation 
+- \(n\) is the sample size
+
+Define a function ~ci~ which takes each of the above as parameters in the given order,
+and prints the bounds of the confidence interval, or prints an error if
+the sample size is zero or negative.
+
+Here are example runs:
+#+begin_example
+>>> ci(100,1.96,10,5)
+interval: [91.23461352820082, 108.76538647179918]
+
+>>> ci(100,1.645,10,0)
+Error: empty sample
+#+end_example
+

@@ -1,0 +1,7 @@
+#+OPTIONS: num:nil
+
+#+include: general.org
+#+include: q1.org
+#+include: q2.org
+#+include: q3.org
+

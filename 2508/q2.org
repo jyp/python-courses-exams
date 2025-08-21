@@ -1,0 +1,33 @@
+* Scrambling
+
+Your task is to implement text scrambling and unscrambling.  The
+scrambling algorithm works as follows: for every word in a text, keep
+the first and the last letter as they are, but alter the order of the
+letters in between.
+
+Altering here means that you swap the first letter with the second, the
+third with the fourth, and so on. If there are an odd number of letters,
+the last letter remains in its original place.
+
+Your scrambler must consist of three functions:
+- ~alter(s)~, which performs a swap for *all* pairs of adjacent
+  letters of string ~s~, as described in the second paragraph. (5pts)
+- ~scramble_word(s)~, which keeps the first and last letters of string ~s~
+  unchanged, and applies ~alter~ to the letters between them (5pts)
+-  ~scramble_text(s)~, which splits the string ~s~ into words and applies
+  ~scramble_word~ to each of them (you can assume that punctuation marks
+  are separated by spaces and that words are separated by exactly
+  one space) (5pts)
+
+Example run:
+
+#+begin_example
+>>> scramble_text("Your task is to implement a word scrambling algorithm")
+'Yuor tsak is to ipmelemnt a wrod srcmalbnig aglrotihm'
+#+end_example
+
+
+Then write a function ~unscramble_text~ which is the left inverse of
+the function ~unscramble_text~. That is, for any valid string ~s~, you
+have ~unscramble_text(scramble_text(s)) == s~. You are free to
+implement this last function as you prefer. (5pts)
