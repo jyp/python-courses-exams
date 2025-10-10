@@ -21,7 +21,7 @@ def kepler(R):
 # seconds_per_day = 24*60*60
 # print(kepler(radii["earth"]))
 def planet_period(name):
-  if planet in radii:
+  if name in radii:
       print(kepler(radii[name]))
   else:
       print("Unknown planet")
