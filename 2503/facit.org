@@ -87,34 +87,15 @@ Assume $G = 6.674 × 10^{−11}$
 Example run:
 #+begin_example
 >>> escape(7.3e22, 1.7e6, 5000) # moon example
-Excess speed: 2394.1153345848056
+Excess speed: 4389.557126260675
 
 >>> escape(6e24, 5.6e6, 5000) # earth example
 The object won't escape
 #+end_example
 
 ** Answer
-#+begin_src python :results output
-  import math
-  G = 6.674e-11
-  def escape(M,r,V):
-     v2 = 2*G*M / r
-     e2 = V**2 - v2
-     if e2 > 0:
-         print("Excess speed:", math.sqrt(e2))
-     else:
-         print("The object won't escape")
 
-  # moon example
-  escape(7.3e22, 1.7e6, 5000)
-  # earth example
-  escape(6e24, 5.6e6, 5000)
-#+end_src
-
-#+RESULTS:
-: Excess speed: 4389.557126260675
-: The object won't escape
-
+#+include: q1.py src python
 
 * Q2 Single-Rotation (20 points)
 
