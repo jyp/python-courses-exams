@@ -1,10 +1,6 @@
 # task 2a
 def find_subsequence(sub, seq):
-    poss = []
-    for m in range(len(seq)):
-        if seq[m:m+len(sub)] == sub:
-            poss.append(m)
-    return poss
+    return list(find_subsequence_gen(sub, seq))
 
 # task 2b
 def take_n(n, gen):
@@ -26,3 +22,12 @@ def find_subsequence_gen(sub, gen):
         if l == sub:
             yield pos-len(sub)+1
         pos += 1
+
+#### other acceptable answer for 2a:
+def find_subsequence(sub, seq):
+    poss = []
+    for m in range(len(seq)):
+        if seq[m:m+len(sub)] == sub:
+            poss.append(m)
+    return poss
+
