@@ -1,0 +1,90 @@
+* Sequences and generators
+:PROPERTIES:
+:CUSTOM_ID: sequences-and-generators
+:END:
+** Task 2a (5 points)
+:PROPERTIES:
+:CUSTOM_ID: task-2a-5-points
+:END:
+Given a long sequence of items, for example a sequence of characters, we
+want to find where a shorter sequence of items occurs as a subsequence
+of the first one.
+
+For example, given the sequence ="SRPSRPRPSSRRPPPPRR"=, the subsequence
+="RP"= occurs four times. The occurences start at indices 1, 4, 6 and 11.
+
+Implement a function =find_subsequence(sub, seq)= which does this,
+returning a list of all the starting indices at which the subsequence
+=sub= occurs in the main sequence =seq=. You can assume the subsequence
+is always non-empty. If it no occurrences are found, you should return
+the empty list.
+
+#+begin_src python
+>>> find_subsequence("RP", "SRPSRPRPSSRRPPPPRR")
+[1, 4, 6, 11]
+
+>>> find_subsequence("RPX", "SRPSRPRPSSRRPPPPRR")
+[]
+#+end_src
+
+Hint: you are allowed to use your answer to task 2c to implement this.
+
+** Task 2b (5 points)
+:PROPERTIES:
+:CUSTOM_ID: task-2b-5-points
+:END:
+Implement a function =take_n(n, gen)= which returns the first =n= items
+from the generator =gen= as a list. If =gen= stops before =n= items have
+been yielded, you should return as many items as have been generated,
+without any error.
+
+Example run:
+
+#+begin_src python
+>>> take_n(5, range(999999))
+[0, 1, 2, 3, 4]
+
+>>> take_n(5, range(3))
+[0, 1, 2]
+#+end_src
+
+** Task 2c (10 points)
+:PROPERTIES:
+:CUSTOM_ID: task-2c-10-points
+:END:
+Remember that very large (or potentially infinite) sequences are often
+generators rather than finite values like strings or lists. We want to
+reimplement our first function for finding subsequences, in a way that
+it can also work with generators. That is, it should be able to find a
+subsequence and yield its starting index as soon as it has received enough
+data. In particular, it should work correctly for infinite sequences,
+which means that our new function must itself be a generator.
+
+Implement a function =find_subsequence_gen(sub, gen)= which yields all
+the indices at which the subsequence =sub= occurs in the main sequence
+=gen=.
+
+Your function should still work with finite sequences:
+
+#+begin_src python
+>>> list(find_subsequence_gen("RP", "SRPSRPRPSSRRPPPPRR"))
+[1, 4, 6, 11]
+#+end_src
+
+To test that it also works with infinite sequences, you can use the
+=take_n= function from task 2b together with the generator below:
+
+#+begin_src python
+import random
+def random_sequence():
+    random.seed(1)
+    while True:
+        yield random.choice("RPS")
+#+end_src
+
+Example run:
+
+#+begin_src python
+>>> take_n(3, find_subsequence_gen("SS", random_sequence()))
+[29, 52, 56]
+#+end_src
