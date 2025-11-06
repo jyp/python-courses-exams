@@ -60,7 +60,7 @@ place: =https://github.com/jyp/python-courses-exams=
 If you believe that a mistake happened when grading your submission,
 you can come to the exam review ('granskning'), which will take place
 
-- Date: Nov 17th
+- Date: Nov 7th
 - Time: 13 to 14
 - Location: EDIT-6217
 
