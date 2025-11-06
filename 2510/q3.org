@@ -1,0 +1,119 @@
+* Rock-paper-scissors
+:PROPERTIES:
+:CUSTOM_ID: rock-paper-scissors
+:END:
+In the two-player game of rock-paper-scissors (RPS), each player chooses
+a move simultaneously and the winner is determined as follows:
+
+- rock (R) beats scissors (S)
+- paper (P) beats rock (R)
+- scissors (S) beat paper (P)
+
+Anything else is a tie/draw.
+
+Your task is to implement a player of RPS as a class. The player should
+remember the moves of previous opponents and use that information to try
+to beat them next time.
+
+We will encode the result of a single game as follows:
+
+- =+1= = win
+- =0= = draw
+- =-1= = lose
+
+If we know the move of one player, and the result of the game, then it
+is possible to deduce the move of the opponent.  We can compute the
+opponent move like so:
+
+#+begin_src python
+possible_moves = ["R", "P", "S"]
+
+def corresponding_move(move, result):
+    return possible_moves[(possible_moves.index(move) - result) % 3]
+#+end_src
+
+#+begin_src python
+>>> corresponding_move("R", +1)
+S
+>>> corresponding_move("R", -1)
+P
+>>> corresponding_move("S", 0)
+S
+#+end_src
+
+** Task 3a (5 points)
+:PROPERTIES:
+:CUSTOM_ID: task-3a-5-points
+:END:
+Given a history of moves as a list of strings, we want to find the most
+common move. Implement the function =most_common_move(moves)= which
+returns the most common move in the list =moves=. If two or more moves
+appear equally as many times, you can return either of them. If =moves=
+is empty, return ="R"=.
+
+#+begin_src python
+>>> most_common_move(["S","P","S","R"])
+S
+>>> most_common_move(["S","P","S","R","P","P"])
+P
+#+end_src
+
+** Task 3b (20 points)
+:PROPERTIES:
+:CUSTOM_ID: task-3b-20-points
+:END:
+Now we are ready to implement the =Player= class. It should have the
+following methods:
+
+- =__init__(self)= which initialises the object. At this point no games
+  have been started. (4 points)
+- =start_game(self, opponent)= which takes the name of the opponent as a
+  string, and returns the move to be played, based on that opponent's
+  previous games. The result should be either ="R"=, ="P"= or ="S"=. If
+  it's the first ever game against this opponent, return ="P"=. You can
+  use the functions =most_common_move= and =corresponding_move= in your
+  method. (9 points)
+- =end_game(self, result)= which ends the game with the current
+  opponent, taking the result of the game (=-1=, =0= or =1=) as an
+  argument and returning =None=. Use =corresponding_move= and record the
+  appropriate information in the object. (7 points)
+
+It is up you to decide what instance variables the class should have.
+
+Note that:
+
+- A game must be started before it can be ended.
+- A game must be ended before another one can be started.
+
+If any of these constraints is violated, you should raise an exception
+with:
+
+#+begin_src python
+raise ValueError
+#+end_src
+
+Example run:
+
+#+begin_src python
+>>> g = Player()
+
+# Game 1, g plays Paper against Jerry:
+>>> g.start_game("Jerry")
+P
+# Jerry played Scissors, so g loses:
+>>> g.end_game(-1)
+
+
+# Game 2, g plays Paper against Elaine:
+>>> g.start_game("Elaine")
+P
+# Elaine also played Paper, so it's a draw:
+>>> g.end_game(0)
+
+
+# Game 3, g plays Rock against Jerry:
+>>> g.start_game("Jerry")
+R
+# Jerry played Scissors, so g wins:
+>>> g.end_game(1)
+#+end_src

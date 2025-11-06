@@ -1,0 +1,25 @@
+* Poisson distribution
+
+The Poisson probability mass function distribution with parameter λ>0 is given by the following equation:
+
+$\displaystyle f(k;\lambda )={\frac {\lambda ^{k}e^{-\lambda }}{k!}}$
+
+where
+
+- λ is a positive real number
+- k is the number of occurrences (k = 0, 1, 2, …)
+- e is Euler's number (e = 2.71828…)
+- k! = k(k-1) ··· (3)(2)(1) is the factorial.
+
+Tasks:
+
+a) Write a function ~poisson(k,lam)~ which computes the above formula (5 points)
+b) Write a function ~main()~ which does the following: (10 points)
+    - input a value for k
+    - input a value for λ
+    - check that the inputs are valid, and:
+      - if they are, print the probability mass
+      - if not, print the error message: "invalid parameters"
+
+Hint: the factorial can be computed using the function ~factorial~ from the ~math~ module.
+
