@@ -101,7 +101,7 @@ Hints:
      and return them as a string. If the file has ~m~ characters
      remaining to read and ~m<n~, then only ~m~ characters will be
      read. In particular, at the end of the file, ~f.read~ always
-     returns the string.
+     returns the empty string.
    - Within the *Exam Sandbox, Question 2*, you can open the file
      "genome.txt". It has the contents GTACACAGT. You can use this
      file for testing.
